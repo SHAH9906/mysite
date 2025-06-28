@@ -1,0 +1,25 @@
+{
+  "name": "seo-expert-website",
+  "version": "1.0.0",
+  "description": "Professional SEO Expert Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000",
+    "build": "echo 'Build complete - static site ready'",
+    "preview": "npx serve . -p 4173"
+  },
+  "keywords": [
+    "seo",
+    "portfolio",
+    "website",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Abrar SEO",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
