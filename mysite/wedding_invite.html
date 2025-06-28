@@ -1,0 +1,378 @@
+<style>
+/* Look, ma! No images!
+   GRATUITIOUS use of hefty web fonts, though. */
+
+   @import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url(https://fonts.googleapis.com/css?family=Handlee);
+@import url(https://fonts.googleapis.com/css?family=Give+You+Glory);
+html {
+ -webkit-font-smoothing: antialiased;
+}
+
+body {
+ padding: 50px;
+}
+
+.library-card {
+ font-family: monospace;
+ transform: rotate( 3deg);
+}
+
+.library-card.envelope {
+ background-color: hsl( 50, 50%, 70%);
+ border-radius: 3px;
+ box-shadow: 0 0 1px hsla( 0, 0%, 0%, 0.5);
+ height: 300px;
+ margin: 100px auto 0;
+ padding-top: 50px;
+ position: relative;
+ width: 290px;
+}
+
+.library-card > .front {
+ background-color: hsl( 50, 50%, 70%);
+ background: -webkit-radial-gradient( hsl( 50, 50%, 90%), hsl( 50, 50%, 70%)) 50% -150px, hsl( 50, 50%, 70%);
+ background-repeat: no-repeat;
+ background-size: 150% 500px;
+ border-radius: 2px 2px 3px 3px;
+ box-shadow: 0 -2px 3px hsla( 0, 0%, 0%, 0.1);
+ cursor: pointer;
+ height: 350px;
+ margin-left: -10px;
+ position: relative;
+ width: 300px;
+ z-index: 1;
+}
+
+.library-card > .card {
+ background-color: #f0f0f0;
+ border-radius: 3px;
+ box-shadow: 0 0 0.2em hsla( 0, 0%, 0%, 0.5);
+ height: 450px;
+ margin-left: -5px;
+ position: absolute;
+ top: -60px;
+ width: 290px;
+ // -webkit-animation: card-stuff 1s 1;
+ -webkit-backface-visibility: hidden;
+ -webkit-transform: rotate( 1deg);
+}
+
+.envelope.card-out > .card {
+ box-shadow: 0 0 0.6em hsla( 0, 0%, 0%, 0.5);
+ -webkit-animation: card-pull 1s 1;
+ -webkit-transform: rotate( -5deg);
+ z-index: 2;
+}
+
+.envelope.card-in > .card {
+ box-shadow: 0 0 0.6em hsla( 0, 0%, 0%, 0.5);
+ -webkit-animation: card-in 1s 1;
+ z-index: 0;
+}
+
+@-webkit-keyframes card-pull {
+ 0% {
+  box-shadow: 0 0 0.2em hsla( 0, 0%, 0%, 0.5);
+  top: -60px;
+  -webkit-transform: rotate( 1deg);
+  z-index: 0;
+ }
+ 50% {
+  box-shadow: 0 0 0.2em hsla( 0, 0%, 0%, 0.5);
+  top: -400px;
+  -webkit-transform: rotate( -1deg);
+  z-index: 0;
+ }
+ 100% {
+  box-shadow: 0 0 0.6em hsla( 0, 0%, 0%, 0.5);
+  top: -60px;
+  -webkit-transform: rotate( -5deg);
+  z-index: 2;
+ }
+}
+
+@-webkit-keyframes card-in {
+ 0% {
+  box-shadow: 0 0 0.6em hsla( 0, 0%, 0%, 0.5);
+  top: -60px;
+  -webkit-transform: rotate( -5deg);
+  z-index: 2;
+ }
+ 50% {
+  box-shadow: 0 0 0.2em hsla( 0, 0%, 0%, 0.5);
+  top: -400px;
+  -webkit-transform: rotate( -1deg);
+  z-index: 2;
+ }
+ 55% {
+  z-index: 0;
+ }
+ 100% {
+  box-shadow: 0 0 0.2em hsla( 0, 0%, 0%, 0.5);
+  top: -60px;
+  -webkit-transform: rotate( 1deg);
+  z-index: 0;
+ }
+}
+
+@-webkit-keyframes card-stuff {
+ 0% {
+  box-shadow: 0 0 0.6em hsla( 0, 0%, 0%, 0.5);
+  top: -60px;
+  -webkit-transform: rotate( -5deg);
+  z-index: 2;
+ }
+ 50% {
+  box-shadow: 0 0 0.2em hsla( 0, 0%, 0%, 0.5);
+  top: -400px;
+  -webkit-transform: rotateZ( -1deg);
+  z-index: 0;
+ }
+ 100% {
+  box-shadow: 0 0 0.2em hsla( 0, 0%, 0%, 0.5);
+  top: -60px;
+  -webkit-transform: rotate( 1deg);
+  z-index: 0;
+ }
+}
+
+.library-card .card {
+ line-height: 36px;
+}
+
+.library-card .stamp {
+ color: hsl( 50, 30%, 20%);
+ font-family: Futura;
+ font-size: 16px;
+ position: relative;
+ top: 100px;
+ text-align: center;
+ // text-transform: uppercase;
+}
+
+.library-card .dewey-decimal {
+ float: left;
+ height: 106px;
+ padding-left: 10px;
+ width: 60px;
+}
+
+.library-card .title {
+ margin-right: 75px;
+ line-height: 18px;
+ text-align: center;
+}
+
+$due-card-line-color: #000090;
+.library-card table {
+ clear: left;
+ tr {
+  border-top: 1px solid $due-card-line-color;
+ }
+ td:last-child {
+  border-left: 1px solid $due-card-line-color;
+ }
+ tr:nth-child(1) {
+  border-top: 2px solid $due-card-line-color;
+ }
+ tr:nth-child(2) {
+  border-top: 2px solid $due-card-line-color;
+ }
+}
+
+.library-card th {
+ font-family: Futura;
+ font-size: 10px;
+ text-align: center;
+ text-transform: uppercase;
+}
+
+.library-card .due-date {
+ padding: 0 2px;
+ width: 61px;
+}
+
+.library-card td.due-date {
+ color: #af0000;
+ font-size: 12px;
+ font-weight: bold;
+ position: relative;
+ -webkit-transform: rotate( 1deg);
+}
+
+.library-card tr:nth-child( 2) td.due-date {
+ -webkit-transform: rotate( -3deg);
+}
+
+.library-card tr:nth-child( 3) td.due-date {
+ -webkit-transform: rotate( 5deg);
+ right: -7px;
+}
+
+.library-card .issued-to {
+ padding: 0 5px;
+ width: 210px;
+}
+
+.library-card td.issued-to {
+ font-family: 'Shadows Into Light', cursive;
+ font-size: 32px;
+}
+
+.library-card tr:nth-child( 2) td.issued-to {
+ font-family: 'Handlee', cursive;
+ font-size: 24px;
+}
+
+.library-card tr:nth-child( 3) td.issued-to {
+ font-family: 'Give You Glory', cursive;
+ font-size: 24px;
+ -webkit-transform: rotate( 1deg);
+}
+
+.form-label {
+ text-align: right;
+ * {
+  padding-right: 5px;
+ }
+}
+
+#rsvp-form {
+ position: absolute;
+ top: 254px;
+ left: 85px;
+ input {
+  border: none;
+  background: rgba(255, 255, 255, 0.0);
+  height: 35px;
+  width: 200px;
+ }
+ .attending-container {
+  padding: 0px;
+  margin: 0px;
+  height: 38px;
+ }
+ label {
+  color: rgba(0, 0, 0, 0.3);
+  display: block;
+  float: left;
+  margin-left: 15px;
+  padding-left: 15px;
+  text-indent: -15px;
+ }
+ 
+ select {
+  margin-left: 7px;
+  padding: 5px 0;
+  appearance: none;
+	background-color: #f0f0f0;
+  border: none;
+	color: rgba(0,0,0,0.5);
+	 option{
+		text: rgba(0,0,0,1);
+	 }
+ }
+ .submit {
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 5px;
+  font-family: monospace;
+  font-size: 150%;
+  margin-left: 30px;
+  color: red;
+  border: 3px solid red;
+  border-radius: 10px;
+  width: 150px;
+  background-color: #f0f0f0;
+ }
+}
+
+  </style>
+ <div class="library-card envelope">
+
+  <div class="front">
+   <p class="stamp">Click here to RSVP</p>
+  </div>
+ 
+  <div class="card">
+   <h4 class="dewey-decimal">395.22</h4>
+   <h2 class="author">RSVP</h2>
+   <h4 class="title">You're invited to our wedding!</h4>
+ 
+   <table>
+    <tr class="top-row">
+     <th class="due-date">Date Due</th>
+     <th class="issued-to">Issued To</th>
+    </tr>
+    <tr>
+     <td class="due-date">
+      <time>02-14-16</time>
+     </td>
+     <td class="issued-to">
+      Bob Bilby
+     </td>
+    </tr>
+    <tr>
+     <td class="due-date">
+      <time>02-14-16</time>
+     </td>
+     <td class="issued-to">
+      Alice Adams
+     </td>
+    </tr>
+    <tr>
+     <td class="due-date form-label">
+      <time>Name</time>
+     </td>
+     <td class="issued-to">
+     </td>
+    </tr>
+    <tr>
+     <td class="due-date form-label">
+      <time>Email</time>
+     </td>
+     <td class="issued-to">
+      <br>
+     </td>
+    </tr>
+    <tr>
+     <td class="due-date form-label">
+      <time>Attending</time>
+     </td>
+     <td class="issued-to">
+      <br>
+     </td>
+    </tr>
+    <tr>
+     <td class="due-date form-label">
+      <time>+1 Name</time>
+     </td>
+     <td class="issued-to">
+      <br>
+     </td>
+    </tr>
+    <tr>
+     <td class="due-date">
+      <time></time>
+     </td>
+     <td class="issued-to">
+      <br>
+     </td>
+    </tr>
+   </table>
+   <form id='rsvp-form'>
+    <input id='name' name='name' type='text' placeholder=" Enter Your Name">
+    <input id='email' name='email' type='email' placeholder=" Enter Your Email Address">
+    <select id='attending' class='attending' name='attending'>
+             <option value='select' selected hidden>Yes or No?</option>
+             <option value="yes">Yes</option>
+             <option value="no">No</option>
+           </select>
+    <input id='plusone' class="plusone" name='plusone' type='text' placeholder=" Enter Your +1's Name">
+    <div class="submit">SUBMIT</div>
+   </form>
+  </div>
+ </div>
+ 
+ </div>

@@ -1,0 +1,357 @@
+<style>
+ html, body, p
+{
+    margin: 0;
+    padding: 0;
+}
+
+html { min-height: 100%; }
+body
+{
+    background-image: linear-gradient(to bottom, #355C7D, #6C5b7B, #C06C84);
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #333;
+    width: 100%;
+}
+
+p
+{
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5em;
+    text-align: left;
+    color: #6A6A6A;
+}
+p.title
+{
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: default;
+    color: #D24D57;
+}
+p.info
+{
+    font-family: Comfortaa, cursive;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000;
+}
+
+div.boardingInfo
+{
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+}
+
+/* WRAPPER
+----------------------------------------------*/
+#wrapper { padding: 60px 0 0 0; }
+#content
+{
+    position: relative;
+    width: auto;
+    margin: 0 auto;
+    padding: 20px 30px 20px 30px;
+    background-color: #FAFAFA;
+}
+
+/* FONT AWESOME CUSTOMIZATION
+----------------------------------------------*/
+.fa-arrow-right { color: #FFF; }
+.fa-qrcode      { color: #FFF; }
+
+/* MAIN STRUCTURE
+----------------------------------------------*/
+.boarding-box
+{
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 400px;
+    overflow-y: auto;
+
+    -webkit-box-shadow: 0 0.75em 3em rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 0.75em 3em rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0.75em 3em rgba(0, 0, 0, 0.2);
+}
+
+.titleBar
+{
+    height: 50px;
+    line-height: 52px;
+    letter-spacing: 1px;
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+    cursor: default;
+    background-color: #D24D57;
+
+    -webkit-transition: background-color .2s ease;
+            transition: background-color .2s ease;
+}
+.titleBar-active { background-color: #333; }
+
+.airport
+{
+    display: inline-block;
+    margin: 10px 0 0 0;
+    padding: 5px 0 0 0;
+    line-height: 100px;
+    font-family: Comfortaa, cursive;
+    font-size: 5.3em;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
+.airport.from { padding-right: 13px; }
+.airport.to   { padding-left: 13px;  }
+
+.city
+{
+    line-height: 1px;
+    word-spacing: 0.3em;
+    font-family: Montserrat, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+}
+.city.from { float: left;  padding-left: 28px;  }
+.city.to   { float: right; padding-right: 33px; }
+
+.no-user-select
+{
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+/* AIR CANADA BUTTON
+----------------------------------------------*/
+.btn-logo
+{
+    position: absolute;
+    margin: auto;
+    top: -25em;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #FAFAFA; 
+    cursor: pointer;
+    transition: all 0.2s linear;
+    z-index: 999;
+    
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+       -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+}
+.btn-logo:hover
+{
+    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+       -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+}
+.btn-logo.click { background-color: #333; }
+
+/* QR CODE FOR FONT AWESOME ICON - NOT USED
+----------------------------------------------*/
+.qrCode
+{
+    display: inline-block;
+    margin: 10px 0 0 0;
+    padding: 5px 10px;
+    font-size: 7.3em;
+}
+
+/* BAR CODE
+----------------------------------------------*/
+table
+{
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+table, th, td { border: 0; }
+td
+{
+    display: inline-block;
+    margin: 37px 0 0 0;
+    padding: 0;
+    width: 0.3em;
+    height: 4.7em;
+}
+
+/* SLIDABLE DESTINATION BOX
+----------------------------------------------*/
+.box-slide              { cursor: default; }
+.box-slide.click .slide { transform: translateY(170px); }
+
+.box-slide,
+.front,
+.back
+{
+    width: 100%;
+    height: 170px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.slide
+{
+    position: relative;
+    transition: 0.5s;
+}
+
+.front,
+.back
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front
+{
+    background-color: #D24D57;
+    z-index: 2;
+    transform: translateY(0px);
+}
+
+.back
+{
+    background-color: #333;
+    transform: translateY(-170px);
+}
+
+/* FOOTER
+----------------------------------------------*/
+footer
+{
+    margin-top: 0;
+    padding: 25px 0 0 0;
+}
+
+.footer-content p
+{
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 32px;
+    color: #EEE;
+    text-align: center;
+}
+
+.footer-content a
+{
+    color: #FFF; 
+    text-decoration: none;
+    padding-bottom: 2px;
+}
+.footer-content a:hover { border-bottom: 1px dotted #EEE; }
+  @media only screen and (max-width: 720px) {
+    .boarding-pass {
+      width: 90%;
+    }
+  }
+  </style>
+ <html>
+    <body>
+      <div id="wrapper">
+        <div class="boarding-box">
+          <div class="titleBar no-user-select">
+            <span>Air Canada Boarding Pass</span>
+          </div>
+          
+          <!-- BEGIN BOARDING BOX -->
+          <div class="box-slide no-user-select">
+            <div class="slide">
+              <div class="front">
+                <div class="card">
+                  <span class="airport from">YVR</span>
+                  <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                  <span class="airport to">YYZ</span>
+                  <span class="city from">Vancouver</span>
+                  <span class="city to">Toronto</span>
+                </div>
+              </div>
+              <div class="back">
+                <div class="card">
+                  <!-- <span class="qrCode"><i class="fa fa-qrcode" aria-hidden="true"></i></span> -->
+                  <table class="barcode">
+                    <tr></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END BOARDING BOX -->
+          
+          <div id="content">
+            <div class="btn-logo no-user-select">
+              <svg viewBox="0 0 200 200" focusable="false" style="height: 70px;">
+                <path fill="#D24E58" d="M100,13.6c-49.5,0-89.5,37.4-89.5,83.6c0,40.5,30.9,74.3,71.8,82c8,1.6,12.9,3.6,15.3,7.1
+                    c5.9-9.7,5.2-40.4,5.2-50.1c0-8.3,5.2-5.6,9.7-3.1l19.1,10.1c1-5.2,7.7-5.6,11.8-3.8l8,2.1l-3.8-8c-2.8-5.2-1.4-9.4,1.7-11.1
+                    l-6.6-5.2c-5.2-3.5-2.1-7,5.2-9.7l11.8-5.6c-7-4.9-2.1-10.4,1-14.6l6.6-8.7l-15-0.4c-7.3-0.7-9-3.1-9-7.7l-15,10.1
+                    c-7,4.5-11.5,0-10.8-8l2.4-18.8c-7,3.8-11.5-1-13.2-5.9c0,0-5.2-10.1-7-15.3c-1.7,5.2-7,15.3-7,15.3c-1.7,4.9-6.3,9.7-13.2,5.9
+                    l2.4,18.8c0.7,8-3.8,12.5-10.8,8l-15-10.1c0,4.5-1.7,7-9,7.7l-15,0.4l6.6,8.7c3.1,4.2,8,9.7,1,14.6l11.8,5.6
+                    c7.3,2.8,10.4,6.3,5.2,9.7l-6.6,5.2c3.1,1.7,4.5,5.9,1.7,11.1l-3.8,8l8-2.1c4.2-1.7,10.8-1.4,11.8,3.8l19.1-10.1
+                    c4.5-2.4,9.7-5.2,9.7,3.1c0,8.7,1.4,28.6-4.8,34.5c-39.9-3.6-71.1-35.1-71.1-73.5c0-40.8,35.2-73.8,78.7-73.8s78.7,33,78.7,73.8
+                    c0,38-30.3,69.3-69.7,73.4l0.1,9.9c45.2-4.3,80.4-39.9,80.4-83.2C189.5,51.1,149.5,13.6,100,13.6z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="title no-user-select">Name/Nom</p>
+              <p class="info">Jane Doe</p>
+            </div>
+            <br/><br/>
+            <div class="boardingInfo">
+              <p class="title no-user-select">Flight/Vol</p>
+              <p class="title no-user-select">Gate/Porte</p>
+              <p class="title no-user-select">Seat/Place</p>
+            </div>
+            <div class="boardingInfo">
+              <p class="info">AC102</p>
+              <p class="info">C48</p>
+              <p class="info">32B (EC)</p>
+            </div>
+            <br/><br/>
+            <div>
+              <p class="title no-user-select">Boarding/Embarquement</p>
+              <p class="info">20:45</p>
+            </div>
+            <br/>
+            <div>
+              <p class="title no-user-select">Depart/D&eacute;part</p>
+              <p id="departure-date" class="info"></p>
+            </div>
+          </div>
+        </div>
+        <!-- Begin FOOTER -->
+        <footer>
+          <div class="footer-content">
+              <p class="footer">
+                <a target="_blank" href="http://github.com/xv">github</a> | 
+                <a target="_blank" href="http://codepen.io/xv">codepen</a>
+              </p>
+          </div>
+        </footer>
+        <!-- End FOOTER -->
+      </div>
+    </body>
+  </html>
